@@ -1,25 +1,48 @@
-import { Page, MoovieList } from './style'
+import { Page, MoovieList, Header } from './style'
 import { CardFilm } from '../../components/CardFilm'
 import { Pagination } from '../../components/Pagination';
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 
 export function Home() {
 
     const [movies, setMovies] = useState([]);
 
-    useEffect(() => {
-        fetch('https://api.themoviedb.org/3/movie/popular?api_key=398d73e3b61c4c9d253f51c8fc0b9988&language=pt-BR&page=1')
-            .then(response => response.json())
-            .then(data => setMovies(data.results))
-    }, [])
+    let { page } = useParams();
+
+    if (!page) {
+        page = 1;
+    }
 
     useEffect(() => {
-        console.log("Executou o useEffect");
-    }, [movies])
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=398d73e3b61c4c9d253f51c8fc0b9988&language=pt-BR&page=${page}`)
+            .then(response => response.json())
+            .then(data => setMovies(data.results))
+    }, [page])
+
+    const [busca, setBusca] = useState('');
+
+    useEffect(() => {
+
+        if(busca) {
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=398d73e3b61c4c9d253f51c8fc0b9988&language=pt-BR&query=${busca}`)
+            .then(response => response.json())
+            .then(data => setMovies(data.results))
+        }
+        
+    }, [busca])
 
     return (
         <Page>
-            <h1>Top Filmes 2023</h1>
+            <Header>
+                <h1>Top Filmes 2023</h1>
+                <input type="text" 
+                name="search" 
+                placeholder="Pesquisar Filme"
+                onChange={(ev) => setBusca(ev.target.value)}
+                />
+            </Header>
+            
             <MoovieList>
                 {
                     
@@ -36,7 +59,7 @@ export function Home() {
                 
             </MoovieList>
 
-            <Pagination />
+            <Pagination page={page}/>
         </Page>
     )
 }

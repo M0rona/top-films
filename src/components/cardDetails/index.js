@@ -1,7 +1,21 @@
 import { Card } from './style'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react';
 
 export function CardDetails({title, image, sinopse, releaseDate}) {
+    const [botaoClicado, setBotaoClicado] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (botaoClicado) {
+            navigate(-1); 
+        }
+    },[botaoClicado, navigate])
+
+    function handleClick() {
+        setBotaoClicado(true);
+    }
+       
     return (
         <Card>
             <img src={image} />
@@ -11,9 +25,8 @@ export function CardDetails({title, image, sinopse, releaseDate}) {
                 
                 <p><strong>Sinopse: </strong>{sinopse}</p>
                
-                <Link to={'/'} >
-                    <button>Voltar</button>
-                </Link>
+               
+                <button onClick={handleClick} >Voltar</button>
             </div>
         </Card>
     )
