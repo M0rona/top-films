@@ -10,7 +10,7 @@ Este é meu primeiro projeto React que consome uma API. Desenvolvi este projeto 
 API USADA: https://www.themoviedb.org/
 
 ## 🔗 Acesse o Projeto
-Clique [aqui](https://lista-de-presenca-steel.vercel.app/) para acessar o projeto.
+Clique [aqui](https://top-films-eta.vercel.app/) para acessar o projeto.
 
 ## 💻 Uso
 A aplicação exibe informações sobre os filmes mais assistidos no momento, além de permitir a busca por filmes específicos. Ela também apresenta detalhes dos filmes, como sinopse e Data de Lançamento.
