@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# 🎬 Top Films em ReactJS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## 📝 Descrição
+Este é meu primeiro projeto em React (Vite), construído com base na Trilha "Discover" da plataforma de cursos RocketSeat.
 
-### `npm start`
+## 🔗 Acesse o Projeto
+Clique [aqui](https://lista-de-presenca-steel.vercel.app/) para acessar o projeto.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 💻 Uso
+A aplicação permite que você adicione o nome de uma pessoa à lista de presença, armazenando seu nome e horário. Além disso, você pode ver as informações do meu usuário no Github, consumindo dados da API da plataforma.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📋 Índice
+- [Instalação](#-instalação)
+- [Execução](#-execução)
+- [Ferramentas](#-ferramentas)
+- [Conceitos Aplicados](#-conceitos-aplicados)
+- [Explicação Detalhada do Código](#-explicação-detalhada-do-código)
 
-### `npm test`
+## 🔧 Instalação
+1. Clone este repositório com `git clone` ou baixe o código-fonte.
+2. Entre na pasta do projeto com `cd lista-de-presenca`.
+3. Instale as dependências com `npm install` ou `yarn`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Execução
+1. Inicie o servidor de desenvolvimento com `npm run dev` ou `yarn dev`.
+2. Abra seu navegador e acesse `http://localhost:5173`.
 
-### `npm run build`
+## 🛠️ Ferramentas
+- React (Vite)
+- CSS
+- JavaScript
+- API do Github
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🧩 Conceitos Aplicados
+- Crianção de Projeto
+- Execução de Projeto
+- Estrutura React
+- JSX
+- Estrutura Pastas e Arquivos
+- Fragment
+- Importação de arquivos CSS
+- Separando CSS
+- Estilização Página CSS
+- Componentes
+- Propriedades
+- Estados
+- Imutabilidade
+- Key Prop
+- Hooks
+- useEffect
+- Consumo de API
+- useEffect Async
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🔎 Explicação Detalhada do Código
+1. Importações: O código importa o React e as funções de hook "useState" e "useEffect" da biblioteca React. Também importa o arquivo CSS e um componente "Card".
 
-### `npm run eject`
+2. useState: O hook "useState" é usado para criar o estado da aplicação. Há três estados criados nesse código: clientName, clients e user. O estado "clientName" é usado para armazenar o nome do cliente digitado pelo usuário. O estado "clients" é usado para armazenar todos os clientes adicionados. O estado "user" é usado para armazenar informações sobre um usuário do Github.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. handleAddClient: Esta é uma função que é executada quando o botão "Adicionar" é clicado. Ela cria um novo objeto de cliente com o nome e horário atual e adiciona esse objeto à lista de clientes usando o hook "setClients".
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. useEffect: O hook "useEffect" é usado para realizar uma requisição HTTP para obter informações sobre um usuário do Github. O useEffect é executado somente uma vez (quando o componente é montado) porque o array vazio é passado como segundo argumento.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. Renderização: Finalmente, o código renderiza a interface do usuário. Há um cabeçalho que exibe o nome e o avatar do usuário do Github obtido através da requisição HTTP. Também há um input para digitar o nome do cliente e um botão para adicioná-lo à lista. Por fim, todos os clientes adicionados são renderizados como componentes "Card".
