@@ -2,19 +2,23 @@
 
 
 
+https://user-images.githubusercontent.com/91230559/218550042-3d73fd52-9df4-4df4-8b5e-c778a59baf60.mp4
+
+
 ## 📝 Descrição
-Este é meu primeiro projeto em React (Vite), construído com base na Trilha "Discover" da plataforma de cursos RocketSeat.
+Este é meu primeiro projeto React que consome uma API. Desenvolvi este projeto para aprimorar minhas habilidades em desenvolvimento front-end, incluindo o uso de Styled Componentes e Rotas. Espero que a aplicação possa ser útil para quem deseja encontrar informações relevantes sobre os filmes mais populares atualmente.<br/>
+API USADA: https://www.themoviedb.org/
 
 ## 🔗 Acesse o Projeto
 Clique [aqui](https://lista-de-presenca-steel.vercel.app/) para acessar o projeto.
 
 ## 💻 Uso
-A aplicação permite que você adicione o nome de uma pessoa à lista de presença, armazenando seu nome e horário. Além disso, você pode ver as informações do meu usuário no Github, consumindo dados da API da plataforma.
+A aplicação exibe informações sobre os filmes mais assistidos no momento, além de permitir a busca por filmes específicos. Ela também apresenta detalhes dos filmes, como sinopse e Data de Lançamento.
 
 ## 📋 Índice
 - [Instalação](#-instalação)
 - [Execução](#-execução)
-- [Ferramentas](#-ferramentas)
+- [Ferramentas](#%EF%B8%8F-ferramentas)
 - [Conceitos Aplicados](#-conceitos-aplicados)
 - [Explicação Detalhada do Código](#-explicação-detalhada-do-código)
 
@@ -24,14 +28,15 @@ A aplicação permite que você adicione o nome de uma pessoa à lista de presen
 3. Instale as dependências com `npm install` ou `yarn`.
 
 ## 🚀 Execução
-1. Inicie o servidor de desenvolvimento com `npm run dev` ou `yarn dev`.
-2. Abra seu navegador e acesse `http://localhost:5173`.
+1. Inicie o servidor de desenvolvimento com `npm start` ou `yarn start`.
+2. Abra seu navegador e acesse `http://localhost:3000`.
 
 ## 🛠️ Ferramentas
-- React (Vite)
-- CSS
+- React
+- React Router
+- Styled Components
 - JavaScript
-- API do Github
+- API do TheMovieDB
 
 ## 🧩 Conceitos Aplicados
 - Crianção de Projeto
@@ -39,28 +44,32 @@ A aplicação permite que você adicione o nome de uma pessoa à lista de presen
 - Estrutura React
 - JSX
 - Estrutura Pastas e Arquivos
-- Fragment
-- Importação de arquivos CSS
-- Separando CSS
 - Estilização Página CSS
 - Componentes
 - Propriedades
 - Estados
-- Imutabilidade
-- Key Prop
 - Hooks
 - useEffect
+- useState
 - Consumo de API
-- useEffect Async
+- Styled Component
+- React Router
 
 
 ## 🔎 Explicação Detalhada do Código
-1. Importações: O código importa o React e as funções de hook "useState" e "useEffect" da biblioteca React. Também importa o arquivo CSS e um componente "Card".
 
-2. useState: O hook "useState" é usado para criar o estado da aplicação. Há três estados criados nesse código: clientName, clients e user. O estado "clientName" é usado para armazenar o nome do cliente digitado pelo usuário. O estado "clients" é usado para armazenar todos os clientes adicionados. O estado "user" é usado para armazenar informações sobre um usuário do Github.
+O componente Home é uma função que retorna elementos JSX. Dentro desta função, o primeiro hook utilizado é useState, que define o estado movies como uma lista vazia de filmes.
 
-3. handleAddClient: Esta é uma função que é executada quando o botão "Adicionar" é clicado. Ela cria um novo objeto de cliente com o nome e horário atual e adiciona esse objeto à lista de clientes usando o hook "setClients".
+Em seguida, a função useParams é usada para obter o parâmetro page da URL. Se este parâmetro não estiver presente, é definido o valor padrão de 1.
 
-4. useEffect: O hook "useEffect" é usado para realizar uma requisição HTTP para obter informações sobre um usuário do Github. O useEffect é executado somente uma vez (quando o componente é montado) porque o array vazio é passado como segundo argumento.
+Depois, a função useEffect é usada para buscar a lista de filmes populares usando a API do TheMoviedb. A URL para esta busca é definida usando a chave da API e o parâmetro page. Quando a resposta é recebida, a lista de filmes é atualizada no estado movies usando a função setMovies.
 
-5. Renderização: Finalmente, o código renderiza a interface do usuário. Há um cabeçalho que exibe o nome e o avatar do usuário do Github obtido através da requisição HTTP. Também há um input para digitar o nome do cliente e um botão para adicioná-lo à lista. Por fim, todos os clientes adicionados são renderizados como componentes "Card".
+Outra função useEffect é usada para buscar filmes de acordo com a busca do usuário. Se o estado busca tiver algum valor, a API do TheMoviedb é consultada novamente com uma nova URL que contém o termo de pesquisa e a chave da API. A lista de filmes encontrados é atualizada no estado movies usando setMovies.
+
+Dentro do retorno da função, é criado um elemento Page que contém um cabeçalho com o título e uma caixa de pesquisa. A lista de filmes é renderizada em um elemento MoovieList, usando o método map para criar um componente CardFilm para cada filme na lista. O CardFilm recebe o id, o título e a URL da imagem do cartaz do filme como propriedades.
+
+O Componente CardFilm leva até a página details, passando através da rota o ID do filme, a página consulta o ID do filme da rota, faz a requisição na API e envia os dados para o Componente CardDetails que mostra as informações na tela.
+
+Por fim, um componente Pagination é renderizado na página, passando o valor do parâmetro page como propriedade. O componente Pagination é responsável por exibir os links para outras páginas de filmes populares.
+
+No geral, a página Home é um exemplo de como usar componentes React, estados e efeitos para criar uma interface de usuário dinâmica que consome uma API externa e apresenta informações úteis ao usuário.
